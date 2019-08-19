@@ -1,0 +1,11 @@
+.card
+  .card-body
+    .table-responsive
+      %table#devices.table.table-striped.table-bordered.dataTable.table-hover{:style => "text-align: center"}
+        %thead
+          %tr
+            %th #
+            %th Name
+            %th Code
+        %tbody
+          = render partial: "device", collection: @devices
