@@ -1,0 +1,16 @@
+.container
+  .row
+    %h1.title Login
+  .row
+    .col-lg-offset-3.col-lg-6
+      = form_for :session, url: login_path do |f|
+        .form-group
+          = f.label :email
+          = f.text_field :email, placeholder: "Enter your email", class: "form-control"
+        .form-group
+          = f.label :password
+          = f.password_field :password, placeholder: "Enter your password", class: "form-control"                                           
+        .text-center
+          = f.submit "Login", class: "btn btn-info col-lg-12"
+        .text-right
+          = link_to "Register", new_user_path
