@@ -1,4 +1,8 @@
-%tr
-  %td= device.id
-  %td= device.name
-  %td= device.code
+- @devices.each do |device|
+  %tr
+    %td= device.id
+    %td= link_to "#{device.name}", device
+    %td= device.code
+    %td
+      - unless device.requests.any?{|request| request.end_at.blank?}
+        = link_to "Delete", device_path(device), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-warning btn-sm", remote: true
