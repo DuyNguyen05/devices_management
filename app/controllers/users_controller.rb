@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.search(params[:search])
+    @users = User.match_name_email(params[:match_name_email])
   end
 
   def new

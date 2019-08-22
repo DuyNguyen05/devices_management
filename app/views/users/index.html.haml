@@ -1,6 +1,6 @@
 %p#notice= notice
 %h1 Users
-= form_tag users_path, :method => 'get', :id => "users_search" do
-  = text_field_tag :search, params[:search]
+= form_tag users_path, :method => 'get', :id => "match_name_email" do
+  = text_field_tag :match_name_email, params[:querry]
   = submit_tag 'Search', name: nil
   #users= render 'users'
