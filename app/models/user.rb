@@ -1,11 +1,4 @@
 class User < ApplicationRecord
+  scope :match_name_email, -> (query) {where("name LIKE ? OR email LIKE ? ", "%#{query}%", "%#{query}%")}
   has_secure_password
-
-  def self.match_name_email(query)
-    if querry
-      where("name LIKE ? OR email LIKE ? ", "%#{query}%", "%#{query}%")
-    else
-      where(nil)
-    end
-  end
 end
