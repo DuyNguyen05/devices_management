@@ -1,4 +1,4 @@
-%h1 Sign up
+%h1 Sign Up
 .row
   .col-md-6.col-md-offset-3
     = form_for(@user) do |f|
@@ -8,6 +8,6 @@
       = f.email_field :email
       = f.label :password
       = f.password_field :password
-      = f.label :password_confirmation, "Password Confirmation"
+      = f.label :password_confirmation, t(".password_confirmation")
       = f.password_field :password_confirmation
-      = f.submit "Create my account", class: "btn btn-primary"
+      = f.submit t(".create_my_account"), class: "btn btn-primary"

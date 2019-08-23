@@ -2,5 +2,5 @@
 %h1 Users
 = form_tag users_path, :method => 'get', :id => "match_name_email" do
   = text_field_tag :match_name_email, params[:match_name_email]
-  = submit_tag 'Search', name: nil
+  = submit_tag t(".search"), name: nil
   #users= render 'users'

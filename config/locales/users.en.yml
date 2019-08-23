@@ -1,0 +1,25 @@
+en:
+  users:
+    index:
+      name: Name
+      email: Email
+      show: Show
+      destroy: Destroy
+      search: Search
+    new:
+      password: Password
+      password_confirmation: Password Confirmation
+      create_my_account: Create my account
+    show:
+      logout: Logout
+  time:
+    formats:
+      default: "%H:%M - %d/%m/%Y"
+  sessions:
+    new:
+      enter_your_email: Enter Your Email 
+      enter_your_password: Enter Your Password
+      login: Login
+      register: Register
+
+
