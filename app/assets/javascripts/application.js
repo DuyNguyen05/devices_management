@@ -23,8 +23,8 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-  $("#match_email_name input").keyup(function() {
-      $.get($("#match_email_name").attr("action"), $("#match_email_name").serialize(), null, "script");
+  $("#match_name_email input").keyup(function() {
+      $.get($("match_name_email").attr("action"), $("#match_name_email").serialize(), null, "script");
       return false;
   });
 });

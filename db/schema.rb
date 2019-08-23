@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2019_08_19_082603) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "end_at"
+    t.bigint "user_id"
+    t.bigint "device_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_histories_on_device_id"
+    t.index ["user_id"], name: "index_histories_on_user_id"
+  end
+
   create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "end_at"
     t.bigint "user_id"
@@ -38,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_082603) do
     t.string "password_digest"
   end
 
+  add_foreign_key "histories", "devices"
+  add_foreign_key "histories", "users"
   add_foreign_key "requests", "devices"
   add_foreign_key "requests", "users"
 end
