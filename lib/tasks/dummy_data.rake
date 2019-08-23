@@ -4,7 +4,7 @@ namespace :dummy_data do
 
     Rake::Task["dummy_data:create_user"].invoke
     Rake::Task["dummy_data:create_devices"].invoke
-    Rake::Task["dummy_data:create_histories"].invoke
+    Rake::Task["dummy_data:create_requests"].invoke
 
     puts "Create dummy data successfully"
   end
@@ -33,11 +33,12 @@ namespace :dummy_data do
     puts "create devices successfully!"
   end
 
-  task create_histories: :environment do
+  task create_requests: :environment do
     50.times do |n|
       user = User.all.to_a.sample
       devices = Device.all.to_a.sample
-      History.create! user: user, device: devices
+      end_at = (rand*30).days.ago
+      Request.create! user: user, device: devices, end_at: end_at
     end
   end
 end

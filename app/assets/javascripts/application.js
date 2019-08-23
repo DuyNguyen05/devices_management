@@ -12,10 +12,12 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require lib/jquery.dataTables.min
-//= require lib/dataTables.bootstrap4.min
 //= require activestorage
 
-$(document).ready(function() {
-  $('#devices').DataTable();
+$(document).ready(function(){
+  $("#search-devices input").keyup(function() {
+    $.get($("#search-devices").attr("action"),
+  $("#search-devices").serialize(), null, "script");
+    return false;
+  });
 });

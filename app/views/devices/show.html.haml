@@ -1,0 +1,32 @@
+.container
+  .row
+    .container
+      .col-md-6.col-custom
+        %h4
+          = t(".model_name")
+          = @device.name
+        %h4.mb
+          = t(".model_tag")
+          = @device.code
+      .card
+        .card-body
+          .table-responsive
+            %table#devices.table.table-striped.table-bordered.table-hover{:style => "text-align: center"}
+              %thead
+                %tr
+                  %th
+                    = t(".when")
+                  %th
+                    = t(".end_at")
+                  %th
+                    = t(".by")
+              %tbody
+                - @device.requests.each do |request|
+                  %tr
+                    %td
+                      = l(request.created_at, format: :default)
+                    %td
+                      - if request.end_at.present?
+                        = l(request.end_at, format: :default)
+                    %td
+                      = request.user.name

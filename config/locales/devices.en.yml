@@ -1,0 +1,22 @@
+en:
+  devices:
+    index:
+      id: ID
+      name: Name
+      code: Code
+      add_device: Add Device
+      enter: Enter Name Or Code
+      search: Search
+    new:
+      add_new_device: Add New Device
+      submit: Submit
+    show:
+      model_name: Model Name -
+      model_tag: Model Tag -
+      id: ID
+      when: When
+      end_at: End At
+      by: By
+  time:
+    formats:
+      default: "%H:%M - %d/%m/%Y"
