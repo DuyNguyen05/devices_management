@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.all
+    @users = User.match_name_email(params[:match_name_email])
   end
 
   def new
@@ -22,6 +22,15 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by id: params[:id]
   end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
     
   private
   def user_params

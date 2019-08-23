@@ -21,3 +21,10 @@ $(document).ready(function(){
     return false;
   });
 });
+
+$(document).ready(function(){
+  $("#match_email_name input").keyup(function() {
+      $.get($("#match_email_name").attr("action"), $("#match_email_name").serialize(), null, "script");
+      return false;
+  });
+});
