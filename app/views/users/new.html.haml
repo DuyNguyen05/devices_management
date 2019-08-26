@@ -1,13 +1,13 @@
-%h1 Sign Up
-.row
-  .col-md-6.col-md-offset-3
+%h1{style: "text-align: center;"} Sign Up
+.row.justify-content-center
+  .col-md-6
     = form_for(@user) do |f|
       = f.label :name
-      = f.text_field :name
+      = f.text_field :name, class: "form-control"
       = f.label :email
-      = f.email_field :email
+      = f.email_field :email, class: "form-control"
       = f.label :password
-      = f.password_field :password
+      = f.password_field :password, class: "form-control"
       = f.label :password_confirmation, t(".password_confirmation")
-      = f.password_field :password_confirmation
+      = f.password_field :password_confirmation, class: "form-control"
       = f.submit t(".create_my_account"), class: "btn btn-primary"

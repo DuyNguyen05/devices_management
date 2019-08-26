@@ -1,0 +1,24 @@
+%a.sidebar-brand.d-flex.align-items-center.justify-content-center
+  %b.navbar-brand Management
+  %ul.navbar-nav.mr-auto
+    %li.nav-item
+      = link_to "User", users_path, class: "nav-link"
+    %li.nav-item
+      = link_to "Devices", devices_path, class: "nav-link"
+
+-# %p
+-# .row
+-#   .col-sm-3.col-md-2.sidebar
+-#     %ul.nav.nav-sidebar.mr-auto
+-#       %li.sidebar= link_to "User",{:controller => 'users', :action =>'index'}, method: :get
+-#       %li.sidebar= link_to "Device", devices_path
+
+-# #sidebar-wrapper.bg-light.border-right
+-#   .sidebar-heading Device manegement
+-#   .list-group.list-group-flush
+-#     %a.list-group-item.list-group-item-action.bg-light{:href => "users_path"} Users
+-#     %a.list-group-item.list-group-item-action.bg-light{:href => "devices_path"} Devices
+
+
+
+

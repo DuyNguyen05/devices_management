@@ -1,7 +1,8 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %title Devices
     = csrf_meta_tags
     = csp_meta_tag
@@ -21,10 +22,14 @@
 
   %body
     = render 'layouts/header'
-    %section.content{:style => "min-height: auto;"}
-    - flash.each do |key, value|
-      .row
-        %div{:class => "alert alert-#{key}"}
-          = value
-    = yield
+    .row
+      .col-md-3
+        = render 'layouts/sidebar'
+      .col-md-9
+        %section.content{:style => "min-height: auto;"}
+        - flash.each do |key, value|
+          .row
+            %div{:class => "alert alert-#{key}"}
+              = value
+        = yield
 
