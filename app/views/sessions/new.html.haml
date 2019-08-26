@@ -1,6 +1,6 @@
 .container
   .row
-    %h1.title Login
+    %h1.title= t(".login")
   .row
     .col-lg-offset-3.col-lg-6
       = form_for :session, url: login_path do |f|

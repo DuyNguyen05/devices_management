@@ -7,6 +7,7 @@ en:
       destroy: Destroy
       search: Search
     new:
+      sign_up: Sign Up
       password: Password
       password_confirmation: Password Confirmation
       create_my_account: Create my account
@@ -21,5 +22,14 @@ en:
       enter_your_password: Enter Your Password
       login: Login
       register: Register
+  layouts:
+    header:
+      log_out: Log out
+      log_in: Log in
+    sidebar:
+      management: Management
+      users: Users
+      devices: Devices
+
 
 
