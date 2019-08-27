@@ -26,9 +26,7 @@ en:
     header:
       log_out: Log out
       log_in: Log in
+      impl_vietnam: IMPL VietNam
     sidebar:
       users: Users
       devices: Devices
-
-
-
