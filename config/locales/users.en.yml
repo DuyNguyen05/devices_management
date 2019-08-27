@@ -27,7 +27,6 @@ en:
       log_out: Log out
       log_in: Log in
     sidebar:
-      management: Management
       users: Users
       devices: Devices
 
