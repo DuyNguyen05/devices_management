@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_pages, only: [:index, :create, :destroy]
-  
+  before_action :set_pages, only: %i[index create destroy]
+
   def index
     if params[:match_name_email].present?
       @users = User.match_name_email(params[:match_name_email])
@@ -34,19 +36,19 @@ class UsersController < ApplicationController
     @user.destroy
     @users = User.paginate(@page)
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
-    
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
   def set_pages
-    params[:page].blank? and return @page = 1
+    params[:page].blank? && (return @page = 1)
     @page = params[:page].to_i
   end
 end
