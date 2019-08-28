@@ -1,13 +1,15 @@
 %table
   %thead
     %tr
-      %th Name
-      %th Email
+      %th 
+        = t(".name")
+      %th 
+        = t(".email")
       %th{:colspan => "2"}
   %tbody
     - @users.each do |user|
       %tr
         %td= user.name
         %td= user.email
-        %td= link_to 'Show', user
-        %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to t(".show"), user
+        %td= link_to t(".destroy"), user, method: :delete, data: { confirm: 'Are you sure?' }
