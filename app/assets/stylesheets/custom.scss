@@ -81,3 +81,10 @@
     flex-direction: column;
     }
   }
+
+.page-item.active {
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
