@@ -13,6 +13,9 @@ en:
       create_my_account: Create my account
     show:
       logout: Logout
+    pagination:
+      previous: Previous
+      next: Next
   time:
     formats:
       default: "%H:%M - %d/%m/%Y"

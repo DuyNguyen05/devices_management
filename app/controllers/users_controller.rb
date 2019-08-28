@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
-
+  before_action :set_pages, only: [:index, :create, :destroy]
+  
   def index
-    @users = User.match_name_email(params[:match_name_email])
+    if params[:match_name_email].present?
+      @users = User.match_name_email(params[:match_name_email])
+    else
+      @users = User.paginate(@page)
+      @total_page = User.total_page
+    end
   end
 
   def new
@@ -11,6 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @users = User.paginate(@page)
       flash[:success] = "Register Success"
       redirect_to users_path
     else
@@ -25,6 +32,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
+    @users = User.paginate(@page)
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
@@ -35,5 +43,10 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def set_pages
+    params[:page].blank? and return @page = 1
+    @page = params[:page].to_i
   end
 end
