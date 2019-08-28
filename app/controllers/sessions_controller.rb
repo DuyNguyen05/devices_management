@@ -6,18 +6,18 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by email: params[:session][:email]
     if User && user.authenticate(params[:session][:password])
-      flash[:success] = 'Welcome'
+      flash[:success] = "Welcome"
       log_in(user)
       redirect_to user
     else
-      flash[:danger] = 'Invalid email/password'
+      flash[:danger] = "Invalid email/password"
       render :new
     end
   end
 
   def destroy
     log_out
-    flash[:success] = 'Hope to see you again'
+    flash[:success] = "Hope to see you again"
     redirect_to login_path
   end
 end

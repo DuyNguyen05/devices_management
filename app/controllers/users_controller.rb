@@ -20,10 +20,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @users = User.paginate(@page)
-      flash[:success] = 'Register Success'
+      flash[:success] = "Register Success"
       redirect_to users_path
     else
-      flash[:danger] = 'Fail'
+      flash[:danger] = "Fail"
       render :new
     end
   end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user.destroy
     @users = User.paginate(@page)
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end
