@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_pages, only: [:index, :create, :destroy]
-  
+  before_action :set_pages, only: %i[index create destroy]
+
   def index
     if params[:match_name_email].present?
       @users = User.match_name_email(params[:match_name_email])
@@ -18,10 +20,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @users = User.paginate(@page)
-      flash[:success] = "Register Success"
+      flash[:success] = 'Register Success'
       redirect_to users_path
     else
-      flash[:danger] = "Fail"
+      flash[:danger] = 'Fail'
       render :new
     end
   end
@@ -39,14 +41,14 @@ class UsersController < ApplicationController
     end
   end
 
-    
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
   def set_pages
-    params[:page].blank? and return @page = 1
+    params[:page].blank? && (return @page = 1)
     @page = params[:page].to_i
   end
 end

@@ -1,6 +1,7 @@
-class DevicesController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :set_pages, only: [:index, :create, :destroy]
+class DevicesController < ApplicationController
+  before_action :set_pages, only: %i[index create destroy]
 
   def index
     if params[:keyword].present?
@@ -50,7 +51,7 @@ class DevicesController < ApplicationController
   end
 
   def set_pages
-    params[:page].blank? and return @page = 1
+    params[:page].blank? && (return @page = 1)
     @page = params[:page].to_i
   end
 end
