@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $("#search-users input").keyup(function() {
-    $.get($("#search-userss").attr("action"),
+    $.get($("#search-users").attr("action"),
   $("#search-users").serialize(), null, "script");
     return false;
   });
