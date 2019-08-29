@@ -23,9 +23,9 @@
   %body
     = render 'layouts/header'
     .row
-      .col-md-3
+      .col-md-2
         = render 'layouts/sidebar'
-      .col-md-9
+      .col-md-10
         %section.content{:style => "min-height: auto;"}
         - flash.each do |key, value|
           .row
