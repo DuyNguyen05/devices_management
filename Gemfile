@@ -20,7 +20,8 @@ gem "uglifier", ">= 1.3.0"
 gem "json"
 gem "dotenv-rails"
 gem "httparty"
-
+gem "kaminari"
+gem "bootstrap4-kaminari-views"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
