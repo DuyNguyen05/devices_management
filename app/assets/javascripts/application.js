@@ -23,9 +23,10 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-  $("#match_name_email input").keyup(function() {
-      $.get($("match_name_email").attr("action"), $("#match_name_email").serialize(), null, "script");
-      return false;
+  $("#search-users input").keyup(function() {
+    $.get($("#search-userss").attr("action"),
+  $("#search-users").serialize(), null, "script");
+    return false;
   });
 });
 

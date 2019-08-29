@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   before_action :set_pages, only: %i[index create destroy]
 
   def index
-    if params[:match_name_email].present?
-      @users = User.match_name_email(params[:match_name_email])
+    if params[:query].present?
+      @users = User.match_name_email params[:query]
     else
       @users = User.paginate(@page)
       @total_page = User.total_page
