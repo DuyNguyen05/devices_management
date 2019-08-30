@@ -25,7 +25,7 @@ class DevicesController < ApplicationController
         format.js
       end
     else
-      render :new
+      render "new"
     end
   end
 

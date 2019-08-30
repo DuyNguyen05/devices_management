@@ -19,10 +19,11 @@ class UsersController < ApplicationController
     if @user.save
       @users = User.page(params[:page]).per(10)
       flash[:success] = "Register Success"
+      log_in @user
       redirect_to users_path
     else
       flash[:danger] = "Fail"
-      render :new
+      render "new"
     end
   end
 

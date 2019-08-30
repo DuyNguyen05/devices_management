@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   = link_to t(".impl_vietnam"), root_path, class: "navbar-brand"
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false",
-   "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", 
+   "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent",
    "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -20,4 +20,5 @@
           %li.nav-item{:style => "margin: 1px;"}
             = link_to t(".log_in"), login_path , class: "nav-link"
           %li.nav-item
-            = link_to t(".log_in_google"), login_url.to_s, class: "nav-link" 
+            = link_to t(".log_in_google"), login_url.to_s, class: "nav-link"
+            = link_to t(".log_in_git"), link_github_login, class: "nav-link"
