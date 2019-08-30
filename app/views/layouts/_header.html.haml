@@ -13,4 +13,4 @@
             = link_to t(".log_out"), logout_path, method: :delete, class: "nav-link"
         - else
           %li.nav-item
-            = link_to t(".log_in"), login_path, class: "nav-link"
+            .g-signin2.nav-link{"data-onsuccess" => "onSignIn"}
