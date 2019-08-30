@@ -21,7 +21,7 @@ en:
       default: "%H:%M - %d/%m/%Y"
   sessions:
     new:
-      enter_your_email: Enter Your Email 
+      enter_your_email: Enter Your Email
       enter_your_password: Enter Your Password
       login: Login
       register: Register
@@ -29,6 +29,7 @@ en:
     header:
       log_out: Log out
       log_in: Log in
+      log_in_git: Log In With GitHub
       impl_vietnam: IMPL VietNam
     sidebar:
       users: Users
