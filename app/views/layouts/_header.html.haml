@@ -10,7 +10,9 @@
       %ul.navbar-nav.ml-auto
         - if logged_in?
           %li.nav-item
+            %a{:href => "#", :onclick => "signOut();"} Sign out
             = link_to t(".log_out"), logout_path, method: :delete, class: "nav-link"
         - else
           %li.nav-item
-            .g-signin2.nav-link{"data-onsuccess" => "onSignIn"}
+            = link_to t(".log_in"), login_path, class: "nav-link" 
+            -# .g-signin2.nav-link{"data-onsuccess" => "onSignIn"}
