@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_080720) do
+ActiveRecord::Schema.define(version: 2019_09_03_124810) do
 
   create_table "devices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_080720) do
     t.string "refresh_token"
     t.string "access_token"
     t.string "expires"
+    t.string "uid"
   end
 
   add_foreign_key "histories", "devices"

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include GoogleHelper
 
-  BASEURL = "http://localhost:3000/"
+  BASEURL = "http://127.0.0.1:3000/"
 
   CLIENT_ID = '913572984176-5gg40b6hebjvgil6cssr2o1fvuomvgq9.apps.googleusercontent.com'
   CLIENT_SECRET = 'pk96Znv0tou8U6AWy8NOMf05'

@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  = link_to t(".impl_vietnam"), root_path, class: "navbar-brand"
+  = link_to t(".smart"), root_path, class: "navbar-brand"
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false",
    "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", 
    "data-toggle" => "collapse", :type => "button"}
@@ -10,9 +10,7 @@
       %ul.navbar-nav.ml-auto
         - if logged_in?
           %li.nav-item
-            %a{:href => "#", :onclick => "signOut();"} Sign out
             = link_to t(".log_out"), logout_path, method: :delete, class: "nav-link"
         - else
           %li.nav-item
             = link_to t(".log_in"), login_path, class: "nav-link" 
-            -# .g-signin2.nav-link{"data-onsuccess" => "onSignIn"}
