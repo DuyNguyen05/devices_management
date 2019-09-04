@@ -6,6 +6,8 @@ require "rails/all"
 require "uri"
 require "net/http"
 require "net/https"
+require "httparty"
+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
