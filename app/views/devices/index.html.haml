@@ -19,5 +19,5 @@
           %th
       %tbody#devices_table
         = render "devices/device"
-    = render "devices/pagination"
+    = paginate @devices, theme: 'twitter-bootstrap-4'
 #myModal1
