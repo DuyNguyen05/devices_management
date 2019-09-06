@@ -10,6 +10,8 @@
       %ul.navbar-nav.ml-auto
         - if logged_in?
           %li.nav-item
+            Signed in as
+            %strong= current_user.name
             = link_to t(".log_out"), logout_path, method: :delete, class: "nav-link"
         - else
           %li.nav-item
