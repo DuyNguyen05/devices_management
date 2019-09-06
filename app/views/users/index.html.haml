@@ -18,5 +18,5 @@
           %th
       %tbody#users_table
         = render "users"
-    = render "pagination"
+    = paginate @users, theme: 'twitter-bootstrap-4'
 #myModal1
