@@ -94,4 +94,18 @@ module GoogleHelper
     return request
   end
 
+  def log_in_google(access_token)
+    session[:access_token] = access_token
+    if user = User.find_by(email: "#{session[:email]}")
+      log_in user
+      redirect_to root_path
+    else
+      flash[:info] = "Register With Us"
+      redirect_to new_user_path
+    end
+    redirect_to users_path
+  rescue => e
+    session[:access_token] = nil
+    return root_path
+  end
 end

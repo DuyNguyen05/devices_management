@@ -9,10 +9,15 @@
     %form.form-inline.my-2.my-lg-0
       %ul.navbar-nav.ml-auto
         - if logged_in?
+          %li.nav-item{:style => "margin: 7px;"}
+            - if session[:email].present? || current_user.present?
+              = link_to "#{session[:email]}", class: "nav-link"
+            - elsif current_user.present?
+              = link_to "#{current_user.email}", class: "nav-link"
           %li.nav-item
-            Signed in as
-            %strong= current_user.name
             = link_to t(".log_out"), logout_path, method: :delete, class: "nav-link"
         - else
+          %li.nav-item{:style => "margin: 1px;"}
+            = link_to t(".log_in"), login_path , class: "nav-link"
           %li.nav-item
-            = link_to t(".log_in"), login_path, class: "nav-link" 
+            = link_to t(".log_in_google"), login_url.to_s, class: "nav-link" 

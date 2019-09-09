@@ -3,8 +3,9 @@
 Rails.application.routes.draw do
   get "pages/home"
   root "pages#home"
-  get '/login', to: 'sessions#new', as: 'login'
-  get '/oauth2callback', to: 'sessions#create'
+  get '/login', to: 'sessions#new', as: 'login' 
+  post 'login' => "sessions#create"
+  get '/oauth2callback', to: 'google#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
   resources :devices
