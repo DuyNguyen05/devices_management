@@ -1,0 +1,24 @@
+#myModalRequestCreate.modal.fade.bd-example-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %h5
+          %b
+            = t(".assign")
+        %h4
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+      .modal-body
+        = form_for request, remote: true do |f|
+          = render "shared/error_messages", object: f.object
+          .form-group
+            = f.hidden_field :device_id, value: params[:device_id]
+            = f.label :when
+            = f.date_field :created_at, class: "form-control"
+          .form-group
+            = f.label :end_at
+            = f.date_field  :end_at, class: "form-control"
+          .form-group
+            = f.label :by
+            = f.select :user_id, options_for_select(users),{} ,class: "form-control"
+          = f.submit t(".create"), class: "btn btn-primary"

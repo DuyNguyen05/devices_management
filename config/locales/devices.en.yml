@@ -17,6 +17,9 @@ en:
       when: When
       end_at: End At
       by: By
+    device:
+      assign: Assign
+      delete: Delete
   time:
     formats:
-      default: "%H:%M - %d/%m/%Y"
+      date_month_year_concise: "%d/%m/%Y"

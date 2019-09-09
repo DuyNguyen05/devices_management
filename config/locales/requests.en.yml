@@ -1,0 +1,16 @@
+en:
+  requests:
+    new:
+      assign: Assign
+      create: Create
+    show:
+      when: When
+      end_at: End At
+      by: By
+      edit: Edit
+    edit:
+      edit: Edit
+      update: Update
+  time:
+    formats:
+      default: "%d/%m/%Y"

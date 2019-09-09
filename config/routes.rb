@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     get "github/callback", to: "github#create"
   end
   resources :devices
+  resources :requests, except: [:show, :destroy]
   resources :users
 end
