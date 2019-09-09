@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_pages, only: %i[index create destroy]
 
   def index
-    if params[:match_name_email].present?
-      @users = User.match_name_email(params[:match_name_email])
+    if params[:query].present?
+      @users = User.match_name_email(params[:query]).page(params[:page])
     else
-      @users = User.paginate(@page)
-      @total_page = User.total_page
+      @users = User.all.page(params[:page]).per(10)
     end
   end
 
@@ -19,7 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @users = User.paginate(@page)
+      @users = User.page(params[:page]).per(10)
       flash[:success] = "Register Success"
       redirect_to users_path
     else
@@ -34,7 +32,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    @users = User.paginate(@page)
+    @users = User.page(params[:page]).per(10)
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
@@ -45,10 +43,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def set_pages
-    params[:page].blank? && (return @page = 1)
-    @page = params[:page].to_i
   end
 end

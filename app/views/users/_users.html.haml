@@ -1,15 +1,7 @@
-%table
-  %thead
-    %tr
-      %th 
-        = t(".name")
-      %th 
-        = t(".email")
-      %th{:colspan => "2"}
-  %tbody
-    - @users.each do |user|
-      %tr
-        %td= user.name
-        %td= user.email
-        %td= link_to t(".show"), user
-        %td= link_to t(".destroy"), user, method: :delete, data: { confirm: 'Are you sure?' }
+- @users.each do |user|
+  %tr
+    %td= user.id
+    %td= link_to "#{user.name}", user
+    %td= user.email
+    %td
+      = link_to "Delete", users_path(user), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-warning btn-sm", remote: true

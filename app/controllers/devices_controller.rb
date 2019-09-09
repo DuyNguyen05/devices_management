@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 class DevicesController < ApplicationController
-  before_action :set_pages, only: %i[index create destroy]
 
   def index
     if params[:keyword].present?
       @devices = Device.includes(:requests).search_device_by_name_or_code params[:keyword]
     else
-      @devices = Device.includes(:requests).paginate(@page)
-      @total_page = Device.total_page
+      @devices = Device.includes(:requests).page(params[:page]).per(10)
     end
   end
 
@@ -22,7 +20,7 @@ class DevicesController < ApplicationController
   def create
     @device = Device.new device_params
     if @device.save
-      @devices = Device.includes(:requests).paginate(@page)
+      @devices = Device.includes(:requests).page(params[:page]).per(10)
       respond_to do |format|
         format.js
       end
@@ -38,7 +36,7 @@ class DevicesController < ApplicationController
   def destroy
     @device = Device.find params[:id]
     @device.destroy
-    @devices = Device.includes(:requests).paginate(@page)
+    @devices = Device.includes(:requests).page(params[:page]).per(10)
     respond_to do |format|
       format.js
     end
@@ -50,8 +48,4 @@ class DevicesController < ApplicationController
     params.require(:device).permit :name, :code
   end
 
-  def set_pages
-    params[:page].blank? && (return @page = 1)
-    @page = params[:page].to_i
-  end
 end
