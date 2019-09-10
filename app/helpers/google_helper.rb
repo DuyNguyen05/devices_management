@@ -23,13 +23,13 @@ module GoogleHelper
 
     # Initialize HTTP library
     url = HTTParty.get('https://accounts.google.com').to_json
-  
+
     # Make request for tokens
-    request = HTTParty.post('https://accounts.google.com/o/oauth2/token', 
+    request = HTTParty.post('https://accounts.google.com/o/oauth2/token',
                 :body => {code: code, client_id: ENV['GOOGLE_CLIENT_ID'], client_secret: ENV['GOOGLE_CLIENT_SECRET'], redirect_uri: ENV['BASEURL'] + "oauth2callback", grant_type: "authorization_code" }.to_json,
-                :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})    
+                :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
     return request
-    
+
 
   end
 
@@ -46,7 +46,7 @@ module GoogleHelper
     url = HTTParty.get('https://accounts.google.com').to_json
 
     # Make request for tokens
-    request = HTTParty.post('https://accounts.google.com/o/oauth2/token', 
+    request = HTTParty.post('https://accounts.google.com/o/oauth2/token',
       :body => {code: code, client_id: ENV['GOOGLE_CLIENT_ID'], client_secret: ENV['GOOGLE_CLIENT_SECRET'], redirect_uri: ENV['BASEURL'] + "oauth2callback", grant_type: "authorization_code" }.to_json,
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'})
     # Parse the response
@@ -70,7 +70,7 @@ module GoogleHelper
     url = HTTParty.get('https://accounts.google.com/oauth2/v1/tokeninfo').to_json
 
     # Make request to API
-    request = HTTParty.get('https://accounts.google.com/oauth2/v1/tokeninfo', 
+    request = HTTParty.get('https://accounts.google.com/oauth2/v1/tokeninfo',
               :headers => {'Authorization': 'Bearer' + access_token})
 
     return requests
@@ -88,24 +88,9 @@ module GoogleHelper
     url = HTTParty.get('https://www.googleapis.com').to_json
 
     # Make request to API
-    
-    request = HTTParty.get('https://www.googleapis.com' + path, 
-              :headers => {'Authorization': 'Bearer' + access_token})    
-    return request
-  end
 
-  def log_in_google(access_token)
-    session[:access_token] = access_token
-    if user = User.find_by(email: "#{session[:email]}")
-      log_in user
-      redirect_to root_path
-    else
-      flash[:info] = "Register With Us"
-      redirect_to new_user_path
-    end
-    redirect_to users_path
-  rescue => e
-    session[:access_token] = nil
-    return root_path
+    request = HTTParty.get('https://www.googleapis.com' + path,
+              :headers => {'Authorization': 'Bearer' + access_token})
+    return request
   end
 end

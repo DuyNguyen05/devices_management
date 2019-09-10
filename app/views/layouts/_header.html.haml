@@ -19,6 +19,7 @@
         - else
           %li.nav-item{:style => "margin: 1px;"}
             = link_to t(".log_in"), login_path , class: "nav-link"
-          %li.nav-item
+          %li.nav-item{:style => "margin: 1px;"}
             = link_to t(".log_in_google"), login_url.to_s, class: "nav-link"
+          %li.nav-item{:style => "margin: 1px;"}
             = link_to t(".log_in_git"), link_github_login, class: "nav-link"

@@ -10,7 +10,7 @@ class GoogleController < ApplicationController
     user_tokens = get_tokens(params[:code])
     user_info = call_api('/oauth2/v2/userinfo', user_tokens['access_token'])
 
-    user = User.where(:uid => user_info['id']).first
+    user = User.where(:email => user_info['email']).first
     if(user == nil)
       flash[:info] = "Register With Us"
       redirect_to new_user_path
