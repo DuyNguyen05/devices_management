@@ -22,5 +22,4 @@
 /config/credentials.yml.enc
 
 #Ignore .env file
-/config/master.key
 .env
