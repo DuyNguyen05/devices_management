@@ -6,7 +6,6 @@ class DevicesController < ApplicationController
     if params[:keyword].present?
       @devices = Device.includes(:requests).search_device_by_name_or_code params[:keyword]
     else
-      byebug
       @devices = Device.includes(:requests).page(params[:page]).per(10)
     end
   end

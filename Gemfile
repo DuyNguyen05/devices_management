@@ -27,7 +27,6 @@ gem "httparty"
 gem "kaminari"
 gem "bootstrap4-kaminari-views"
 
-
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "rubocop", "~> 0.74.0", require: false
