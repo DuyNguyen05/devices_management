@@ -7,16 +7,23 @@ ruby "2.6.1"
 
 gem "bcrypt"
 gem "bootsnap", ">= 1.1.0", require: false
+gem "dotenv-rails", groups: [:development, :test]
 gem "faker"
 gem "haml-rails"
+gem "httparty"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "jquery-ui-rails"
+gem "json"
 gem "mysql2"
+gem "oauth2"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.0"
 gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
+gem "json"
+gem "dotenv-rails"
+gem "httparty"
 gem "kaminari"
 gem "bootstrap4-kaminari-views"
 

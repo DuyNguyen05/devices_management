@@ -10,10 +10,11 @@ module SessionsHelper
   end
 
   def logged_in?
-    current_user.present?
+    current_user.present? || session[:access_token].present?
   end
 
   def log_out
     session.delete :user_id
+    session.delete :access_token
   end
 end

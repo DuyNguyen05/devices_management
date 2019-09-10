@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   = link_to t(".impl_vietnam"), root_path, class: "navbar-brand"
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false",
-   "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", 
+   "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent",
    "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -9,8 +9,17 @@
     %form.form-inline.my-2.my-lg-0
       %ul.navbar-nav.ml-auto
         - if logged_in?
+          %li.nav-item{:style => "margin: 7px;"}
+            - if session[:email].present? || current_user.present?
+              = link_to "#{session[:email]}", class: "nav-link"
+            - elsif current_user.present?
+              = link_to "#{current_user.email}", class: "nav-link"
           %li.nav-item
             = link_to t(".log_out"), logout_path, method: :delete, class: "nav-link"
         - else
-          %li.nav-item
-            = link_to t(".log_in"), login_path, class: "nav-link"
+          %li.nav-item{:style => "margin: 1px;"}
+            = link_to t(".log_in"), login_path , class: "nav-link"
+          %li.nav-item{:style => "margin: 1px;"}
+            = link_to t(".log_in_google"), login_url.to_s, class: "nav-link"
+          %li.nav-item{:style => "margin: 1px;"}
+            = link_to t(".log_in_git"), link_github_login, class: "nav-link"
