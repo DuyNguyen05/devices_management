@@ -17,4 +17,16 @@
           .form-group
             = f.label :code
             = f.text_field  :code, class: "form-control"
+          .form-group
+            = f.label :accquired_date
+            = f.date_field  :accquired_date, class: "form-control"
+          .form-group
+            = f.label :supplier
+            = f.text_field  :supplier, class: "form-control"
+          .form-group
+            = f.label :user_id, 'Buyer'
+            = f.text_field :user_id, class: "form-control", disabled: true, value: @buyer
+          .form-group
+            = f.label :price
+            = f.text_field  :price, class: "form-control"
           = f.submit t(".submit"), class: "btn btn-primary"
