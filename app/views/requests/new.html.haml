@@ -1,11 +1,20 @@
 .card
   .card-body
+    .span.info
+      %h4= t(".info")
+      = t(".name")
+      %u
+        %b= link_to "#{@device.name}", @device
+      %br
+      = t(".code")
+      %u
+        %b= link_to"#{@device.code}", @device
     .span
       %div{:style => " margin-top: 15px; "}
         = form_tag new_request_path, method: :get do
           .input-group
             = text_field_tag :query, params[:query], placeholder: t(".enter")
-          = submit_tag t(".search"), class: "btn btn-primary btn-sm"
+            = submit_tag t(".search"), class: "btn btn-primary btn-sm buton"
   .table-responsive
     %table.table.table-striped.table-bordered.table-hover{:style => "text-align: center"}
       %thead
@@ -20,6 +29,7 @@
         - @users.each do |user|
           %tr
             %td= user.id
-            %td= link_to "#{user.name}", "#"
+            %td= link_to "#{user.name}", new_request_path(user_id: "#{user.id}", device_id: params[:device_id], user_name: "#{user.name}"), remote: true
             %td= user.email
     = paginate @users, theme: "twitter-bootstrap-4"
+#myModalRequest

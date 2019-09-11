@@ -61,7 +61,7 @@
 }
 
 .side-wrapper {
-  min-height: 100vh;
+  min-height: 120vh;
 }
 
 @media (min-width: 992px) {
@@ -87,4 +87,10 @@
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+.buton{
+  margin-left: 5px;
+}
+.info{
+  margin-bottom: 30px;
 }

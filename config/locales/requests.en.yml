@@ -1,13 +1,17 @@
 en:
   requests:
-    new:
+    modal_new:
       assign: Assign
       create: Create
+    new:
       search: Search User
       enter: Enter Your Name Or Email
       id: ID
       name: Name
       email: Email
+      info: Device Information Assign
+      name: "Device Name:"
+      code: "Model: "
     show:
       when: When
       end_at: End At
