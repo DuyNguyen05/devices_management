@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require jquery-ui
 //= require activestorage
 
 $(document).ready(function(){
@@ -30,3 +31,8 @@ $(document).ready(function(){
   });
 });
 
+$(document).ready(function () {
+  $("#autocomplete-1").autocomplete({
+    source: "/users"
+  })
+});

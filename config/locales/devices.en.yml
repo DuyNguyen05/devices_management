@@ -11,15 +11,17 @@ en:
       add_new_device: Add New Device
       submit: Submit
     show:
-      model_name: Model Name -
-      model_tag: Model Tag -
+      info: Device Information
+      name: "Model Name:"
+      code: "Model Tag: "
       id: ID
-      when: When
+      start: Start
       end_at: End At
       by: By
     device:
       assign: Assign
       delete: Delete
+      are_you_sure: Are You Sure?
   time:
     formats:
       date_month_year_concise: "%d/%m/%Y"

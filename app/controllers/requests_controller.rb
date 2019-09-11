@@ -4,19 +4,23 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
+    @device = Device.find params[:device_id] if params[:device_id].present?
     if params[:query].present?
       @users = User.match_name_email(params[:query]).page(params[:page]).per(10)
     else
       @users = User.all.page(params[:page]).per(10)
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
   def create
     @request = Request.new request_params
     if @request.save
-      @devices = Device.includes(:requests).page(params[:page]).per(10)
       respond_to do |format|
-        format.js
+        format.js{ flash[:success] = t(".assign")}
       end
     else
       render "new"
@@ -25,6 +29,8 @@ class RequestsController < ApplicationController
 
   def edit
     @request = Request.find params[:id]
+    @user = User.match_name_email params[:term]
+    @users = User.all.page(params[:page]).per(10)
     respond_to do |format|
       format.js
     end
