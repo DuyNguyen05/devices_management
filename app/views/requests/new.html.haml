@@ -1,0 +1,25 @@
+.card
+  .card-body
+    .span
+      %div{:style => " margin-top: 15px; "}
+        = form_tag new_request_path, method: :get do
+          .input-group
+            = text_field_tag :query, params[:query], placeholder: t(".enter")
+          = submit_tag t(".search"), class: "btn btn-primary btn-sm"
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover{:style => "text-align: center"}
+      %thead
+        %tr
+          %th
+            = t(".id")
+          %th
+            = t(".name")
+          %th
+            = t(".email")
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.id
+            %td= link_to "#{user.name}", "#"
+            %td= user.email
+    = paginate @users, theme: "twitter-bootstrap-4"

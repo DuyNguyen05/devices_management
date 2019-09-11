@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class RequestsController < ApplicationController
-  before_action :load_user
 
   def new
     @request = Request.new
-    respond_to do |format|
-      format.js
+    if params[:query].present?
+      @users = User.match_name_email(params[:query]).page(params[:page]).per(10)
+    else
+      @users = User.all.page(params[:page]).per(10)
     end
   end
 
@@ -41,9 +42,5 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit :created_at, :end_at, :user_id, :device_id
-  end
-
-  def load_user
-    @users = User.pluck :name, :id
   end
 end

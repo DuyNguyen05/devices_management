@@ -3,6 +3,11 @@ en:
     new:
       assign: Assign
       create: Create
+      search: Search User
+      enter: Enter Your Name Or Email
+      id: ID
+      name: Name
+      email: Email
     show:
       when: When
       end_at: End At
