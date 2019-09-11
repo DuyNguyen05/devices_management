@@ -12,7 +12,11 @@ en:
       submit: Submit
     show:
       model_name: Model Name -
-      model_tag: Model Tag -
+      model_code: Model Code -
+      model_supplier: Model Supplier -
+      model_price: Model Price -
+      model_condition: Model Condition -
+      model_accquired_date: Model Accquired Date -
       id: ID
       when: When
       end_at: End At

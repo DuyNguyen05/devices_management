@@ -31,6 +31,7 @@ class DevicesController < ApplicationController
 
   def show
     @device = Device.includes(:requests).find params[:id]
+    @request = @device.requests.last
   end
 
   def destroy
@@ -45,7 +46,7 @@ class DevicesController < ApplicationController
   private
 
   def device_params
-    params.require(:device).permit :name, :code
+    params.require(:device).permit :name, :code, :accquired_date, :supplier, :buyer, :price
   end
 
 end
