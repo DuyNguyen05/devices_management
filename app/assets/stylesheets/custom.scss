@@ -88,9 +88,33 @@
   background-color: #007bff;
   border-color: #007bff;
 }
+
 .buton{
   margin-left: 5px;
 }
+
 .info{
   margin-bottom: 30px;
+}
+
+.ui-autocomplete {
+  position: absolute;
+  z-index: 99999 !important;
+  cursor: default;
+  padding: 0;
+  margin-top: 2px;
+  list-style: none;
+  background-color: #ffffff;
+}
+
+.ui-autocomplete>li {
+  padding: 3px 20px;
+}
+
+.ui-autocomplete>li.ui-state-focus {
+  background-color: #DDD;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
 }

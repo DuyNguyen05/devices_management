@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
     @request = Request.new request_params
     if @request.save
       respond_to do |format|
-        format.js{ flash[:success] = t(".assign")}
+        format.js { flash[:success] = t(".assign") }
       end
     else
       render "new"
@@ -29,8 +29,6 @@ class RequestsController < ApplicationController
 
   def edit
     @request = Request.find params[:id]
-    @user = User.match_name_email params[:term]
-    @users = User.all.page(params[:page]).per(10)
     respond_to do |format|
       format.js
     end
@@ -38,9 +36,17 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find params[:id]
-    @request.update request_params
+    @user = User.find_by(email: params[:request][:user])
+    @request.update request_params.merge(user_id: @user.id)
     respond_to do |format|
       format.js
+    end
+  end
+
+  def load_user
+    if params[:query]
+      @users = User.match_name_email(params[:query])
+      render json: { users: @users.map { |user| user.email }}
     end
   end
 

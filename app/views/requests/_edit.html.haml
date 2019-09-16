@@ -8,8 +8,8 @@
         %h4
           %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
             %span{"aria-hidden" => "true"} ×
-      .modal-body
-        = form_for request, remote: true do |f|
+      .modal-body.ui-front
+        = form_for request,remote: true do |f|
           = render "shared/error_messages", object: f.object
           .form-group
             = f.label :start
@@ -19,5 +19,5 @@
             = f.date_field  :end_at, class: "form-control"
           .form-group
             = f.label :by
-            = f.text_field :user_id, class: "form-control", id: "autocomplete-1"
+            = f.text_field :user, value: params[:term], id: "autocomplete1", class: "form-control"
           = f.submit t(".update"), class: "btn btn-primary"

@@ -9,7 +9,7 @@ module GithubHelper
   def log_in_github(access_token)
     session[:access_token] = access_token
     auth_result = GithubApi.fetch_user_email(access_token)
-    session[:email] = auth_result.parsed_response.first['email']
+    session[:email] = auth_result.parsed_response.first["email"]
     if user = User.find_by(email: "#{session[:email]}")
       log_in user
       redirect_to root_path

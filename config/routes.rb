@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   get "pages/home"
   root "pages#home"
-  get '/oauth2callback', to: 'google#create'
+  get "/oauth2callback", to: "google#create"
+  get "/search", to: "requests#load_user"
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"

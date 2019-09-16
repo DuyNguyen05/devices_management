@@ -1,2 +1,11 @@
 $("#ModalRequestEdit").html("<%= j render "requests/edit", request: @request, users: @users %>");
 $("#myModalRequestEdit").modal("show");
+$("#autocomplete1").autocomplete({
+  source: function(request, response){
+    $.get('/search', { query: request.term }, function(data) {
+      debugger;
+      response(data.users);
+    });
+  }
+});
+$("#autocomplete1").autocomplete("option", "appendTo", ".edit_request");

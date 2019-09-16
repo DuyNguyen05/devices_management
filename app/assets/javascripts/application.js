@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui/widgets/autocomplete
 //= require rails-ujs
-//= require jquery-ui
 //= require activestorage
 
 $(document).ready(function(){
@@ -29,10 +29,4 @@ $(document).ready(function(){
   $("#search-users").serialize(), null, "script");
     return false;
   });
-});
-
-$(document).ready(function () {
-  $("#autocomplete-1").autocomplete({
-    source: "/users"
-  })
 });
