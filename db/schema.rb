@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_124810) do
+ActiveRecord::Schema.define(version: 2019_09_18_023100) do
+
+  create_table "buy_requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "device_name"
+    t.text "reason"
+    t.integer "state", default: 0, null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_buy_requests_on_user_id"
+  end
 
   create_table "devices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -42,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_124810) do
     t.string "uid"
   end
 
+  add_foreign_key "buy_requests", "users"
   add_foreign_key "requests", "devices"
   add_foreign_key "requests", "users"
 end

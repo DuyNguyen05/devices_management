@@ -10,10 +10,13 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
+
   scope "/auth" do
     get "github/callback", to: "github#create"
   end
+
   resources :devices
   resources :requests, except: [:show, :destroy]
   resources :users
+  resources :buy_requests
 end

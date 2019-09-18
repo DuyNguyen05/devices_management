@@ -1,0 +1,10 @@
+- @buy_requests.each do |r|
+  %tr
+    %td= r.id
+    %td= link_to "#{r.device_name}", r
+    %td= r.reason
+    %td
+      = form_for(r, method: :put, remote: true) do |f|
+        = f.select :state, options_for_select(BuyRequest.states.keys, r.state)
+        = f.submit "Confirm", class: "btn btn-primary"
+#myModalRequest
