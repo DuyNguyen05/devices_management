@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  end_at: 2019-09-18 08:16:08
+  user: one
+  device: one
+
+two:
+  end_at: 2019-09-18 08:16:08
+  user: two
+  device: two

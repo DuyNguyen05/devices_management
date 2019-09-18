@@ -1,0 +1,27 @@
+en:
+  assigns:
+    modal_new:
+      assign: Assign
+      create: Create
+    new:
+      search: Search User
+      enter: Enter Your Name Or Email
+      id: ID
+      name: Name
+      email: Email
+      info: Device Information Assign
+      name: "Device Name:"
+      code: "Model: "
+    show:
+      start: Start
+      end_at: End At
+      by: By
+      edit: Edit
+    edit:
+      edit: Edit
+      update: Update
+    create:
+      assign: Assign User To Device Success
+  time:
+    formats:
+      default: "%d/%m/%Y"

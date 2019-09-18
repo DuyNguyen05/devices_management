@@ -1,9 +1,8 @@
-$("#ModalRequestEdit").html("<%= j render "requests/edit", request: @request, users: @users %>");
-$("#myModalRequestEdit").modal("show");
+$("#ModalAssignEdit").html("<%= j render "assigns/edit", assign: @assign, users: @users %>");
+$("#myModalAssignEdit").modal("show");
 $("#autocomplete1").autocomplete({
   source: function(request, response){
     $.get('/search', { query: request.term }, function(data) {
-      debugger;
       response(data.users);
     });
   }

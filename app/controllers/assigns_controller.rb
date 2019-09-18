@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-class RequestsController < ApplicationController
-
+class AssignsController < ApplicationController
   def new
-    @request = Request.new
+    @assign = Assign.new
     @device = Device.find params[:device_id] if params[:device_id].present?
     if params[:query].present?
       @users = User.match_name_email(params[:query]).page(params[:page]).per(10)
@@ -17,8 +16,8 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new request_params
-    if @request.save
+    @assign = Assign.new assign_params
+    if @assign.save
       respond_to do |format|
         format.js { flash[:success] = t(".assign") }
       end
@@ -28,16 +27,16 @@ class RequestsController < ApplicationController
   end
 
   def edit
-    @request = Request.find params[:id]
+    @assign = Assign.find params[:id]
     respond_to do |format|
       format.js
     end
   end
 
   def update
-    @request = Request.find params[:id]
-    @user = User.find_by(email: params[:request][:user])
-    @request.update request_params.merge(user_id: @user.id)
+    @assign = Assign.find params[:id]
+    @user = User.find_by(email: params[:assign][:user])
+    @assign.update assign_params.merge(user_id: @user.id)
     respond_to do |format|
       format.js
     end
@@ -52,7 +51,7 @@ class RequestsController < ApplicationController
 
   private
 
-  def request_params
-    params.require(:request).permit :created_at, :end_at, :user_id, :device_id
+  def assign_params
+    params.require(:assign).permit :created_at, :end_at, :user_id, :device_id
   end
 end

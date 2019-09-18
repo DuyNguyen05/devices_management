@@ -11,7 +11,7 @@
         %b= link_to"#{@device.code}", @device
     .span
       %div{:style => " margin-top: 15px; "}
-        = form_tag new_request_path, method: :get do
+        = form_tag new_assign_path, method: :get do
           .input-group
             = hidden_field_tag :device_id,  params[:device_id]
             = text_field_tag :query, params[:query], placeholder: t(".enter")
@@ -30,7 +30,7 @@
         - @users.each do |user|
           %tr
             %td= user.id
-            %td= link_to "#{user.name}", new_request_path(user_id: "#{user.id}", device_id: params[:device_id], user_name: "#{user.name}"), remote: true
+            %td= link_to "#{user.name}", new_assign_path(user_id: "#{user.id}", device_id: params[:device_id], user_name: "#{user.name}"), remote: true
             %td= user.email
     = paginate @users, theme: "twitter-bootstrap-4"
-#myModalRequest
+#myModalAssign

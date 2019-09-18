@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def index
     if params[:query].present?
       @users = User.match_name_email(params[:query]).page(params[:page])
-      render json: @users.map { |user| user.email }
     else
       @users = User.all.page(params[:page]).per(10)
     end
