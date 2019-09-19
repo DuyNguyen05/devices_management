@@ -1,0 +1,6 @@
+- @tags.each do |tag|
+  %tr
+    %td= tag.id
+    %td= tag.name
+    %td= link_to t(".delete"), tag_path(tag), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-warning btn-sm", remote: true
+#myModalRequest

@@ -1,0 +1,17 @@
+.card
+  .card-body
+    .span
+      = link_to t(".create_tag"), new_tag_path, remote: true, class: "btn btn-primary btn-sm"
+      %div{:style => " margin-top: 15px; "}
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover{:style => "text-align: center"}
+      %thead
+        %tr
+          %th
+            = t(".id")
+          %th
+            = t(".name")
+      %tbody#tags_table
+        = render "tags/tag"
+    = paginate @tags, theme: 'twitter-bootstrap-4'
+#myModal1

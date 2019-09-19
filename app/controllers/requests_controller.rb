@@ -47,7 +47,7 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit :created_at, :end_at, :user_id, :device_id
+    params.require(:request).permit :created_at, :end_at, :user_id, :device_id, tag_ids: []
   end
 
   def load_user
