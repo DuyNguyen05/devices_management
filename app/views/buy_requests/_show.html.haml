@@ -1,0 +1,26 @@
+#myModalBuyRequest.modal.fade.bd-example-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %h5
+          %b
+            = t(".buy_request") + " #" + "#{buy_request.id}"
+        %h4
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+      .modal-body
+        %dl
+          %dt= t(".device_name")
+          %dd.border= buy_request.device_name
+
+          %dt= t(".reference_link")
+          %dd.border= link_to buy_request.reference_link, buy_request.reference_link
+
+          %dt= t(".reason")
+          %dd.border= buy_request.reason
+
+          %dt= t(".state")
+          %dd
+            = form_for(buy_request, method: :put, remote: true) do |f|
+              = f.select :state, options_for_select(BuyRequest.states.keys, buy_request.state)
+              = f.submit "Confirm", class: "btn btn-primary"

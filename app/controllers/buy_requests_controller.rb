@@ -1,9 +1,17 @@
 class BuyRequestsController < ApplicationController
+  before_action :set_buy_request, only: [:update, :show]
+
   def index
     if params[:keyword].present?
-      @buy_requests = current_user.buy_requests.search_buy_requests_by_device_name_or_reason_or_state(params[:keyword])
+      @buy_requests = current_user.buy_requests.search_buy_requests(params[:keyword])
     else
       @buy_requests = current_user.buy_requests.page(params[:page]).per(10)
+    end
+  end
+
+  def show
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -27,7 +35,6 @@ class BuyRequestsController < ApplicationController
   end
 
   def update
-    @buy_request = BuyRequest.find(params[:id])
     @buy_request.update_attribute(:state, params[:buy_request][:state])
     respond_to do |format|
       format.js
@@ -37,6 +44,10 @@ class BuyRequestsController < ApplicationController
   private
 
   def buy_request_params
-    params.require(:buy_request).permit(:device_name, :reason, :state)
+    params.require(:buy_request).permit(:device_name, :reference_link, :reason, :state)
+  end
+
+  def set_buy_request
+    @buy_request = BuyRequest.find(params[:id])
   end
 end

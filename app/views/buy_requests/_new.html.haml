@@ -13,7 +13,10 @@
           = render "shared/error_messages", object: f.object
           .form-group
             = f.label :device_name
-            = f.text_field :device_name, class: "form-control"
+            = f.text_field :device_name, class: "form-control", placeholder: "Please insert only one device"
+          .form-group
+            = f.label :reference_link
+            = f.text_field :reference_link, class: "form-control"
           .form-group
             = f.label :reason
             = f.text_field  :reason, class: "form-control"

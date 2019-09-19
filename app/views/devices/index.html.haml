@@ -3,7 +3,7 @@
     .span
       = link_to t(".add_device"), new_device_path, remote: true, class: "btn btn-primary btn-sm"
       %div{:style => " margin-top: 15px; "}
-        = form_tag devices_path, method: :get, :id => "search-devices" do
+        = form_tag devices_path, method: :get, :id => "search-devices", :onkeypress => "return noenter()" do
           .input-group
             = text_field_tag :keyword, params[:keyword], placeholder: t(".enter")
   .table-responsive

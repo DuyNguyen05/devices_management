@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_023100) do
 
   create_table "buy_requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "device_name"
+    t.text "reference_link"
     t.text "reason"
     t.integer "state", default: 0, null: false
     t.bigint "user_id"

@@ -37,3 +37,7 @@ $(document).ready(function(){
     return false;
   });
 });
+
+function noenter() {
+  return !(window.event && window.event.keyCode == 13);
+};
