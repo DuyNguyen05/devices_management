@@ -2,7 +2,7 @@
   .card-body
     .span
       %div{:style => " margin-top: 15px; "}
-        = form_tag users_path, method: :get, :id => "search-users" do
+        = form_tag users_path, method: :get, :id => "search-users", :onkeypress => "return noenter()" do
           .input-group
             = text_field_tag :query, params[:query]
   .table-responsive

@@ -1,0 +1,26 @@
+.card
+  .card-body
+    .span
+      = link_to t(".add_request"), new_buy_request_path, remote: true, class: "btn btn-primary btn-sm"
+      %div{:style => " margin-top: 15px; "}
+        = form_tag buy_requests_path, method: :get, :id => "search-buy-requests", :onkeypress => "return noenter()" do
+          .input-group
+            = text_field_tag :keyword, params[:keyword], placeholder: t(".enter")
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover{:style => "text-align: center"}
+      %thead
+        %tr
+          %th
+            = t(".id")
+          %th
+            = t(".device_name")
+          %th
+            = t(".reference_link")
+          %th
+            = t(".reason")
+          %th
+            = t(".state")
+      %tbody#buy_requests_table
+        = render "buy_requests/buy_requests"
+    = paginate @buy_requests, theme: 'twitter-bootstrap-4'
+#myModalBuyRequest1

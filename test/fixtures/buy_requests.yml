@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  device_name: MyString
+  reason: MyText
+  state: 1
+  user: one
+
+two:
+  device_name: MyString
+  reason: MyText
+  state: 1
+  user: two

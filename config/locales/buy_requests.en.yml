@@ -1,0 +1,27 @@
+en:
+  buy_requests:
+    index:
+      id: ID
+      device_name: Device Name
+      reference_link: Reference Link
+      state: State
+      reason: Reason
+      add_request: Add Request
+      enter: Search
+      submit: Submit
+    new:
+      add_new_buy_request: Add new buy request
+      submit: Submit
+      assign: Assign
+      create: Create
+    show:
+      when: When
+      end_at: End At
+      by: By
+      edit: Edit
+    edit:
+      edit: Edit
+      update: Update
+  time:
+    formats:
+      default: "%d/%m/%Y"

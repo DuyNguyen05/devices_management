@@ -30,3 +30,14 @@ $(document).ready(function(){
   });
 });
 
+$(document).ready(function(){
+  $("#search-buy-requests input").keyup(function() {
+    $.get($("#search-buy-requests").attr("action"),
+  $("#search-buy-requests").serialize(), null, "script");
+    return false;
+  });
+});
+
+function noenter() {
+  return !(window.event && window.event.keyCode == 13);
+};

@@ -1,0 +1,11 @@
+- @buy_requests.each do |buy_request|
+  - unless buy_request.state == 2 || buy_request.state == 3
+    %tr
+      %td= buy_request.id
+      %td= link_to "#{buy_request.device_name}", buy_request, remote: true
+      %td= link_to "#{truncate(buy_request.reference_link, length: 20)}", buy_request.reference_link
+      %td= truncate(buy_request.reason, length: 50, separator: " ")
+      %td
+        = form_for(buy_request, method: :put, remote: true) do |f|
+          = f.select :state, options_for_select(BuyRequest.states.keys, buy_request.state)
+          = f.submit "Confirm", class: "btn btn-primary"
