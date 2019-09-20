@@ -16,7 +16,7 @@ namespace :dummy_data do
     20.times do |_n|
       name = Faker::Name.name
       email = Faker::Internet.email
-      password = 123_456
+      password = "123456"
       created_at = (rand * 40).days.ago
       User.create(name: name, email: email, password: password, created_at: created_at)
     end

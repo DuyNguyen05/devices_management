@@ -1,4 +1,4 @@
-#myModalRequestCreate.modal.fade.bd-example-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+#myModalRequestCreate.modal.fade.bd-example-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog"}
   .modal-dialog.modal-lg
     .modal-content
       .modal-header
@@ -21,4 +21,8 @@
           .form-group
             = f.label :by
             = f.select :user_id, options_for_select(users),{} ,class: "form-control"
+          .form-group
+            = f.label :tag
+            = f.select :tag_ids, options_for_select(Tag.all.pluck(:name, :id)), {}, {:multiple => true, :id => "select2multi", :style => "width: 766px; height: 38px; border: 1px solid rgb(206, 212, 218);"}
           = f.submit t(".create"), class: "btn btn-primary"
+

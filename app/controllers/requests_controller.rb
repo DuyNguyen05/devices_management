@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
     @request = Request.new request_params
     if @request.save
       @devices = Device.includes(:requests).page(params[:page]).per(10)
+      @request.device.update_attribute(:condition, "unavaiable")
       respond_to do |format|
         format.js
       end
@@ -31,16 +32,22 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find params[:id]
-    @request.update request_params
+    @request.update end_at: Time.zone.now
+    @request.device.update_attribute(:condition, "avaiable")
     respond_to do |format|
       format.js
     end
   end
 
+  def destroy
+      @request = Request.find params[:id]
+      @request.destroy
+  end
+
   private
 
   def request_params
-    params.require(:request).permit :created_at, :end_at, :user_id, :device_id
+    params.require(:request).permit :created_at, :end_at, :user_id, :device_id, tag_ids: []
   end
 
   def load_user

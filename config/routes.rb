@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   scope "/auth" do
     get "github/callback", to: "github#create"
   end
+
+  resources :tags, except: [:show]
   resources :devices
-  resources :requests, except: [:show, :destroy]
+  resources :requests, except: [:show, ]
   resources :users
 end
