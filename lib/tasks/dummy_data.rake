@@ -6,7 +6,7 @@ namespace :dummy_data do
 
     Rake::Task["dummy_data:create_user"].invoke
     Rake::Task["dummy_data:create_devices"].invoke
-    Rake::Task["dummy_data:create_requests"].invoke
+    Rake::Task["dummy_data:create_assigns"].invoke
 
     puts "Create dummy data successfully"
   end
@@ -16,7 +16,7 @@ namespace :dummy_data do
     20.times do |_n|
       name = Faker::Name.name
       email = Faker::Internet.email
-      password = 123_456
+      password = "12345678"
       created_at = (rand * 40).days.ago
       User.create(name: name, email: email, password: password, created_at: created_at)
     end
@@ -34,12 +34,12 @@ namespace :dummy_data do
     puts "create devices successfully!"
   end
 
-  task create_requests: :environment do
+  task create_assigns: :environment do
     50.times do |_n|
       user = User.all.to_a.sample
       devices = Device.all.to_a.sample
       end_at = (rand * 30).days.ago
-      Request.create! user: user, device: devices, end_at: end_at
+      Assign.create! user: user, device: devices, end_at: end_at
     end
   end
 end

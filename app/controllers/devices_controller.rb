@@ -4,9 +4,9 @@ class DevicesController < ApplicationController
 
   def index
     if params[:keyword].present?
-      @devices = Device.includes(:requests).search_device_by_name_or_code params[:keyword]
+      @devices = Device.includes(:assigns).search_device_by_name_or_code params[:keyword]
     else
-      @devices = Device.includes(:requests).page(params[:page]).per(10)
+      @devices = Device.includes(:assigns).page(params[:page]).per(10)
     end
   end
 
@@ -20,7 +20,7 @@ class DevicesController < ApplicationController
   def create
     @device = Device.new device_params
     if @device.save
-      @devices = Device.includes(:requests).page(params[:page]).per(10)
+      @devices = Device.all.page(params[:page]).per(10)
       respond_to do |format|
         format.js
       end
@@ -30,13 +30,13 @@ class DevicesController < ApplicationController
   end
 
   def show
-    @device = Device.includes(:requests).find params[:id]
+    @device = Device.find params[:id]
   end
 
   def destroy
     @device = Device.find params[:id]
     @device.destroy
-    @devices = Device.includes(:requests).page(params[:page]).per(10)
+    @devices = Device.all.page(params[:page]).per(10)
     respond_to do |format|
       format.js
     end

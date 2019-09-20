@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_124810) do
+ActiveRecord::Schema.define(version: 2019_09_18_011608) do
+
+  create_table "assigns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "end_at"
+    t.bigint "user_id"
+    t.bigint "device_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_assigns_on_device_id"
+    t.index ["user_id"], name: "index_assigns_on_user_id"
+  end
 
   create_table "devices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "end_at"
-    t.bigint "user_id"
-    t.bigint "device_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["device_id"], name: "index_requests_on_device_id"
-    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -42,6 +42,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_124810) do
     t.string "uid"
   end
 
-  add_foreign_key "requests", "devices"
-  add_foreign_key "requests", "users"
+  add_foreign_key "assigns", "devices"
+  add_foreign_key "assigns", "users"
 end

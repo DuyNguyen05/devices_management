@@ -6,9 +6,9 @@ class Device < ApplicationRecord
                                             OR code LIKE ?", "%#{keyword}%", "%#{keyword}%")
                                         }
 
-  has_many :requests, dependent: :destroy
+  has_many :assigns, dependent: :destroy
 
   validates :name, presence: true
-  validates :code, presence: true, uniqueness: true
-  
+  # validates :code, presence: true, uniqueness: true
+
 end

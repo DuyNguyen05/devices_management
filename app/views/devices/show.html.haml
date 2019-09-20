@@ -2,10 +2,13 @@
   .row
     .container
       .col-md-6.col-custom
-        %h4
-          = t(".model_name")
-          = @device.name
-        %h4.mb
-          = t(".model_tag")
-          = @device.code
-      = render "requests/show", device: @device
+        .span.info
+          %h4= t(".info")
+          = t(".name")
+          %u
+            %b= link_to "#{@device.name}"
+          %br
+          = t(".code")
+          %u
+            %b= link_to"#{@device.code}"
+      = render "assigns/show", device: @device

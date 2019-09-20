@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   get "pages/home"
   root "pages#home"
-  get '/oauth2callback', to: 'google#create'
+  get "/oauth2callback", to: "google#create"
+  get "/search", to: "assigns#load_user"
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
@@ -14,6 +15,6 @@ Rails.application.routes.draw do
     get "github/callback", to: "github#create"
   end
   resources :devices
-  resources :requests, except: [:show, :destroy]
+  resources :assigns, except: [:show, :destroy]
   resources :users
 end
